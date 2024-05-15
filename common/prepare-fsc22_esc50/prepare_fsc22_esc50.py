@@ -17,36 +17,40 @@ import wget
 
 def main():
     main_dir = os.getcwd()
-    dataset_path = os.path.join(main_dir, 'datasets/fsc22')
+    dataset_path = os.path.join(main_dir, 'datasets/esc50')  # change the dataset name accordingly
 
     if not os.path.exists(dataset_path):
         os.mkdir(dataset_path)
 
     sr_list = [44100, 20000]
 
-    # Set the URL of the FSC-22 dataset
+    # Set the URL of the dataset. Change this accordingly
     url = 'https://storage.googleapis.com/kaggle-data-sets/2483929/4213460/bundle/archive.zip'
+
     # Set the save location for the dataset
     save_location = dataset_path
 
-    # Download the dataset
+    # Download the dataset.
     wget.download(url, save_location)
 
-    # Unzip the dataset
-    zip_file = "archive.zip"
+    # Unzip the dataset. Change the name of the zip file accordingly.
+    zip_file = "ESC-50-master.zip"
     with zipfile.ZipFile(dataset_path + "\\" + zip_file, "r") as zip_ref:
         zip_ref.extractall(save_location)
 
     # Remove the zip file
-    os.remove(zip_file)
+    # os.remove(dataset_path + "\\" + zip_file)
 
+    # Change the master file directory name accordingly
     dataset_master_path = os.path.join(dataset_path, 'FSC-22-master')
 
+    # Comment out the lines from 48 to 49 when preparing ESC-50
     if not os.path.exists(dataset_master_path):
         shutil.copytree(os.path.join(dataset_path, 'Audio Wise V1.0-20220916T202003Z-001'), dataset_master_path)
 
     dataset_master_audio_path = os.path.join(dataset_master_path, 'audio')
 
+    # Comment out the lines from 54 to 58 when preparing ESC-50
     if not os.path.exists(dataset_master_audio_path):
         os.rename(os.path.join(dataset_master_path, 'Audio Wise V1.0'), os.path.join(dataset_master_path, 'audio'))
 
@@ -55,7 +59,7 @@ def main():
 
     # Convert sampling rate
     for sr in sr_list:
-        convert_sr(os.path.join(dataset_path, 'FSC-22-master', 'audio'),
+        convert_sr(os.path.join(dataset_master_audio_path),
                    os.path.join(dataset_path, 'wav{}'.format(sr // 1000)),
                    sr)
 

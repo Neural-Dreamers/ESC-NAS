@@ -18,7 +18,11 @@
 ## Instructions
 
 1. Download the dataset from: https://www.kaggle.com/datasets/sreyareddy15/esc10rearranged
-2. Create a folder named "esc10" in the datasets directory and include the folders of 10 classes into that.
+2. Create a folder named "esc10" in the datasets directory and extract the folders of 10 classes into that.
 3. You can change the sample rate and the number of samples accordingly.
 4. Run the notebook "prepare_esc10.ipynb".
 5. NPZ file will be saved in the datasets/esc10 directory.
+
+##### Note
+* Downloading the datasets From Kaggle requires a [Kaggle](https://www.kaggle.com/) account.
+Please create one if you already haven't.

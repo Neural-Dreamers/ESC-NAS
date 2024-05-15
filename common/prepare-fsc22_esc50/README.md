@@ -10,8 +10,12 @@
 
 1. Set the correct URL of the dataset to be downloaded.
    * Get FSC22 from: https://storage.googleapis.com/kaggle-data-sets/2483929/4213460/bundle/archive.zip
-   * Get ESC50 from: https://github.com/karolpiczak/ESC-50
-   
+   * Get ESC50 from: https://github.com/karolpiczak/ESC-50 
 2. Change the code as required by the dataset and its directory structure.
-3. Run ```python common/prepare_dataset.py```
+   Set the correct URL of the datasets, directory names, Zip file names and directory paths.  
+3. Run ```python common/prepare-fsc22_esc50/prepare_fsc22_esc50.py```
 4. NPZ file will be saved in the datasets/<dataset_name> directory.
+
+##### Note
+* Downloading the datasets From Kaggle requires a [Kaggle](https://www.kaggle.com/) account.
+Please create one if you already haven't.

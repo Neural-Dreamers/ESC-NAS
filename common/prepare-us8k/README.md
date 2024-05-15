@@ -7,10 +7,12 @@
 
 ## Instructions
 1. Download the dataset from: https://www.kaggle.com/datasets/chrisfilo/urbansound8k
-2. Create a folder named "urbansound8k" in the datasets directory and include the folders of 10 folds into that.
+2. Create a folder named "urbansound8k" in the datasets directory and extract the downloaded zip file into that.
 3. You can change the sample rate and the number of samples accordingly.
-4. Create a python env, install the required libraries using:
-   
-   Run: ```pip install numpy librosa scikit-learn```.
-5. Run the notebook "prepare_us8k.ipynb".
-6. NPZ file will be saved in the datasets/urbansound8k directory.
+4. Run the notebook "prepare_us8k.ipynb".
+5. NPZ file will be saved in the datasets/urbansound8k directory.
+
+
+##### Note
+* Downloading the datasets From Kaggle requires a [Kaggle](https://www.kaggle.com/) account.
+Please create one if you already haven't.
