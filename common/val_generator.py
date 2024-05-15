@@ -31,7 +31,7 @@ class ValGenerator:
         sound_list = []
         label_list = []
         indexes = None
-        for i in range(self.batch_size):
+        for i in range(len(self.data)):
             sound, target = self.data[i]
             sound = self.preprocess(sound).astype(np.float32)
             label = np.zeros((self.opt.nCrops, self.opt.nClasses[self.opt.dataset]))
