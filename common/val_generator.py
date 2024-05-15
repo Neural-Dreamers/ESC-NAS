@@ -69,6 +69,8 @@ if __name__ == '__main__':
     opt.batchSize = opt.nSamples[opt.dataset]
 
     for sr in [44100, 20000]:
+        if opt.dataset not in ['fsc22', 'esc50'] and sr == 44100:
+            continue
         opt.sr = sr
         opt.inputLength = 66650 if sr == 44100 else 30225
         mainDir = os.getcwd()
