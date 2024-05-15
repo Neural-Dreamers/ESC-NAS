@@ -10,7 +10,7 @@ ESC-NAS: Environment sound classification using hardware-aware Neural Architectu
 
 ## A. Executing ESC-NAS
 
-#### A.1 Prerequisites
+### A.1 Prerequisites
 1. A valid Google Colab account to run the ESC-NAS process.
 2. Create **python 3.11** development environment.
    `python -m venv env`
@@ -24,9 +24,9 @@ ESC-NAS: Environment sound classification using hardware-aware Neural Architectu
    `pip install wavio wget pydub librosa matplotlib seaborn soundfile pandas scikit-learn`
 
 ##### Note
-* ESC-NAS is developed and tested in Windows 10 environment. The forthcoming sections assumes that the above libraries/software are now installed.
+* ESC-NAS is developed and tested in Windows 10 environment and Google Colab. The forthcoming sections assumes that the above libraries/software are now installed.
 
-#### A.2 Dataset preparation
+### A.2 Dataset preparation
 1. Download/clone the repository.
 2. Go to the root of ESC-NAS directory using the terminal.
 3. To process the required dataset, follow the instructions in the README files in
@@ -35,19 +35,19 @@ ESC-NAS: Environment sound classification using hardware-aware Neural Architectu
 
 *All the required data of the datasets for processing `44.1kHz` and `20kHz` are now ready at `datasets/<specific-dataset>` directory.*
 
-#### A.3 Executing ESC-NAS
+### A.3 Executing ESC-NAS
 *There are pretrained models resulting for each dataset from ESC-NAS are provided inside `torch/resources/trained_models` directory that can be used instead of 
 training a new model. The model names are self-explanatory*.
 
 However, to conduct a brand new ESC-NAS process follow the instructions in the README files in
 `nas` directory.
 
-#### A.4 Training the best model for a dataset resulting from ESC-NAS
+## B. Training the best model for a dataset resulting from ESC-NAS
 1. To train a model resulting from ESC-NAS, first change the model architecture in `torch/resources/models.py`
 2. Then run this command: ```python torch/trainer.py --dataset <dataset_name>``` to train the model for the given dataset.
 3. Follow the on-screen self-explanatory steps.
 
-### A.4 Testing an ESC-NAS model
+## C Testing an ESC-NAS model
 1. To test a trained model, run this command: ```python torch/tester.py --dataset <dataset_name>``` to test the model for the given dataset.
 2. Follow the on-screen self-explanatory steps.
 
