@@ -2,7 +2,7 @@
 
 1. Set the sample rate of all the wav files to 20kHz.
 2. All the clips set to 100k samples by padding and cropping clips.
-3. Merge all the 10 classes into one folder and prepare 5 stratified folds and get a NPZ file as the resultant dataset.
+3. Create an NPZ file as the resultant dataset with fold split.
 4. Classes are 0-indexed.
 
 ## Instructions

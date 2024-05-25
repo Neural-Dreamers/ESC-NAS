@@ -16,17 +16,17 @@ def parse():
     opt = parser.parse_args()
 
     # Learning settings
-    opt.batchSize = 64
+    opt.batchSize = 64  # 128 for UrbanSound8k, 64 for others
     opt.weightDecay = 5e-4
     opt.momentum = 0.9
     opt.nEpochs = 2000
-    opt.LR = 0.1  # 0.01 for UrbanSound8k
-    opt.schedule = [0.3, 0.6, 0.9]  # [0.2, 0.4, 0.7] for UrbanSound8k
+    opt.LR = 0.1  # 0.01 for UrbanSound8k, 0.1 for others
+    opt.schedule = [0.3, 0.6, 0.9]  # [0.2, 0.4, 0.7] for UrbanSound8k, [0.3, 0.6, 0.9] for others
     opt.warmup = 10
 
     # Basic Net Settings
     opt.nClasses = {'fsc22': 26, 'esc10': 10, 'esc50': 50, 'urbansound8k': 10}
-    opt.nFolds = 5
+    opt.nFolds = 5  # 10 for UrbanSound8k, 5 for others
     opt.splits = [i for i in range(1, opt.nFolds + 1)]
     opt.sr = 20000
     opt.inputLength = 30225
@@ -34,7 +34,7 @@ def parse():
 
     # Test data
     opt.nCrops = 10
-    opt.nSamples = {'fsc22': 3900, 'esc10': 800, 'esc50': 4000, 'urbansound8k': 17470}
+    opt.nSamples = {'fsc22': 3900, 'esc10': 800, 'esc50': 4000, 'urbansound8k': 8730}
 
     opt.augmentation_data = {"time_stretch": 0.8, "pitch_shift": 1.5}
 
