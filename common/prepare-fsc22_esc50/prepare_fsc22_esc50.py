@@ -17,7 +17,7 @@ import wget
 
 def main():
     main_dir = os.getcwd()
-    dataset_path = os.path.join(main_dir, 'datasets/esc50')  # change the dataset name accordingly
+    dataset_path = os.path.join(main_dir, 'datasets/fsc22')  # change the dataset name accordingly
 
     if not os.path.exists(dataset_path):
         os.mkdir(dataset_path)
@@ -34,7 +34,7 @@ def main():
     wget.download(url, save_location)
 
     # Unzip the dataset. Change the name of the zip file accordingly.
-    zip_file = "ESC-50-master.zip"
+    zip_file = "archive.zip"
     with zipfile.ZipFile(dataset_path + "\\" + zip_file, "r") as zip_ref:
         zip_ref.extractall(save_location)
 
@@ -74,11 +74,8 @@ def rename_source_files(src_path):
     folds = 5
     audio_file_list = sorted(os.listdir(src_path))
 
-    # set skip to limit the number of samples in the fold to reduce training time
-    skip = 0
-
     for fold in range(1, folds + 1):
-        for i in range(fold - 1, len(audio_file_list), folds + skip):
+        for i in range(fold - 1, len(audio_file_list), folds):
             audio_file = audio_file_list[i]
             label = audio_file.split('_')[0]
 
@@ -135,11 +132,16 @@ def create_dataset(src_path, dataset_dst_path):
         dataset['fold{}'.format(fold)]['labels'] = labels
 
     all_labels = {label for fold_data in dataset.values() for label in fold_data['labels']}
+    print(f'before: {all_labels}')
 
-    # make labels 1 indexed
-    if min(all_labels) == 0:
+    # make labels 0 indexed
+    if min(all_labels) == 1:
+        print('Dataset is 1 indexed')
         for fold_data in dataset.values():
-            fold_data['labels'] = [label + 1 for label in fold_data['labels']]
+            fold_data['labels'] = [label - 1 for label in fold_data['labels']]
+
+    all_labels = {label for fold_data in dataset.values() for label in fold_data['labels']}
+    print(f'after: {all_labels}')
 
     np.savez(dataset_dst_path, **dataset)
 

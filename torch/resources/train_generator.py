@@ -74,7 +74,7 @@ class Generator:
                 r = np.array(random.random())
                 sound = u.mix(sound1, sound2, r, self.opt.sr).astype(np.float32)
                 eye = np.eye(self.opt.nClasses[self.opt.dataset])
-                label = (eye[label1 - 1] * r + eye[label2 - 1] * (1 - r) ).astype(np.float32)
+                label = (eye[label1] * r + eye[label2] * (1 - r)).astype(np.float32)
 
                 # For stronger augmentation
                 sound = u.random_gain(6)(sound).astype(np.float32)
@@ -107,8 +107,7 @@ class Generator:
                 mix_sound = u.mix(sound1, sound2, r, self.opt.sr).astype(np.float32)
                 sound = u.mix(mix_sound, sound3, q, self.opt.sr).astype(np.float32)
                 eye = np.eye(self.opt.nClasses[self.opt.dataset])
-                label = (eye[label1 - 1] * r * q + eye[label2 - 1] * (1 - r) * q + eye[label3 - 1] * (1 - q)).astype(
-                    np.float32)
+                label = (eye[label1] * r * q + eye[label2] * (1 - r) * q + eye[label3] * (1 - q)).astype(np.float32)
 
                 # For stronger augmentation
                 sound = u.random_gain(6)(sound).astype(np.float32)
@@ -146,8 +145,7 @@ class Generator:
                 mix_sound2 = u.mix(mix_sound1, sound3, q, self.opt.sr).astype(np.float32)
                 sound = u.mix(mix_sound2, sound4, p, self.opt.sr).astype(np.float32)
                 eye = np.eye(self.opt.nClasses[self.opt.dataset])
-                label = (eye[label1 - 1] * r * q * p + eye[label2 - 1] * (1 - r) * q * p + eye[label3 - 1] * (1 - q) * p + eye[label4 - 1] * (1 - p)).astype(
-                    np.float32)
+                label = (eye[label1] * r * q * p + eye[label2] * (1 - r) * q * p + eye[label3] * (1 - q) * p + eye[label4] * (1 - p)).astype(np.float32)
 
                 # For stronger augmentation
                 sound = u.random_gain(6)(sound).astype(np.float32)
