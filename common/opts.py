@@ -26,7 +26,7 @@ def parse():
 
     # Basic Net Settings
     opt.nClasses = {'fsc22': 26, 'esc10': 10, 'esc50': 50, 'urbansound8k': 10}
-    opt.nFolds = 5  # 10 for UrbanSound8k, 5 for others
+    opt.nFolds = 10  # 10 for UrbanSound8k, 5 for others
     opt.splits = [i for i in range(1, opt.nFolds + 1)]
     opt.sr = 20000
     opt.inputLength = 30225

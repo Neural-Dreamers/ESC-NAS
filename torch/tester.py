@@ -21,7 +21,7 @@ import resources.models as models
 import resources.calculator as calc
 
 
-class Trainer:
+class Tester:
     def __init__(self, opt=None):
         self.opt = opt
         self.testX = None
@@ -256,17 +256,38 @@ if __name__ == '__main__':
             valid_path = True
 
     valid_fold = False
-    while not valid_fold:
-        fold = input(
-            "Select the fold on which the model was Validated:\n"
-            " 1. Fold-1\n"
-            " 2. Fold-2\n"
-            " 3. Fold-3\n"
-            " 4. Fold-4\n"
-            " 5. Fold-5\n :")
-        if fold in ['1', '2', '3', '4', '5']:
-            opt.split = int(fold)
-            valid_fold = True
+    split = None
+    if opt.dataset == 'urbansound8k':
+        while not valid_fold:
+            fold = input(
+                "Which fold do you want your model to be Validated:\n"
+                " 0. 10-Fold Cross Validation\n"
+                " 1. Fold-1\n"
+                " 2. Fold-2\n"
+                " 3. Fold-3\n"
+                " 4. Fold-4\n"
+                " 5. Fold-5\n"
+                " 6. Fold-6\n"
+                " 7. Fold-7\n"
+                " 8. Fold-8\n"
+                " 9. Fold-9\n"
+                " 10. Fold-10\n :")
+            if fold in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']:
+                split = int(fold)
+                valid_fold = True
+    else:
+        while not valid_fold:
+            fold = input(
+                "Which fold do you want your model to be Validated:\n"
+                " 0. 5-Fold Cross Validation\n"
+                " 1. Fold-1\n"
+                " 2. Fold-2\n"
+                " 3. Fold-3\n"
+                " 4. Fold-4\n"
+                " 5. Fold-5\n :")
+            if fold in ['0', '1', '2', '3', '4', '5']:
+                split = int(fold)
+                valid_fold = True
 
-    trainer = Trainer(opt)
-    trainer.TestModel()
+    tester = Tester(opt)
+    tester.TestModel()
