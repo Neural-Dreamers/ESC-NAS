@@ -5,7 +5,18 @@ for resource constrained edge devices.
 ### Published as:
 ESC-NAS: Environment sound classification using hardware-aware Neural Architecture Search for the edge.
 ### Please cite this work as:
-    @article{
+    @article{ranmal2024esc,
+        title={ESC-NAS: Environment Sound Classification Using Hardware-Aware Neural Architecture Search for the Edge},
+        author={Ranmal, Dakshina and Ranasinghe, Piumini and Paranayapa, Thivindu and Meedeniya, Dulani and Perera, Charith},
+        journal={Sensors},
+        volume={24},
+        number={12},
+        article-number={3749},
+        url={https://www.mdpi.com/1424-8220/24/12/3749},
+        pages={3749},
+        year={2024},
+        publisher={Multidisciplinary Digital Publishing Institute},
+        doi={10.3390/s24123749}
     }
 
 ### Prerequisites
@@ -34,7 +45,7 @@ ESC-NAS: Environment sound classification using hardware-aware Neural Architectu
 *All the required data of the datasets for processing `44.1kHz` and `20kHz` are now ready at `datasets/<specific-dataset>` directory.*
 
 ## B. Executing ESC-NAS
-*There are pretrained models resulting for each dataset from ESC-NAS are provided inside `torch/resources/trained_models` directory that can be used instead of 
+*There are pretrained models resulting for each dataset from ESC-NAS are provided inside `torch/trained_models` directory that can be used instead of 
 training a new model. The model names are self-explanatory*.
 
 However, to conduct a brand new ESC-NAS process follow the instructions in the README files in
